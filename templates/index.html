@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="header-container">
+            <h1 class="todo-title">Plan Your Day</h1>
+            <p class="subtitle">Stay organized, stay productive</p>
+        </div>
+        <div id="todo-container">
+            <form method="POST" class="form">
+                {% csrf_token %}
+                <div class="input-container">
+                    <div class="input-group">
+                        <label for="task" class="input-label">Task:</label>
+                        <input type="text" id="task" name="task" class="task-input" placeholder="Enter your task" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="date" class="input-label">Due Date:</label>
+                        <input type="date" id="date" name="date" class="date-input" required>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="submit" id="add-task-button" class="btn btn-primary">Add Task</button>
+                </div>
+            </form>
+            <div class="button-container">
+                <a href="{% url 'yourtask' %}">
+                    <button type="button" class="btn btn-secondary">View Your Tasks</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
